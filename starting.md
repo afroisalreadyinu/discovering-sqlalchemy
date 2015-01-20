@@ -1,7 +1,36 @@
+Starting off with SQLAlchemy
+============================
+
 In this chapter, we will cover the basics of connecting to a database,
-running statements, and interacting with a session. Let's add a very
-simple table to our `sqlalchemydb` database. Connect to the database
-with `psql sqlalchemydb`, and run the following SQL statement:
+running statements, and interacting with a session.  Let's start witht
+the most basic operation, connecting to a database. In a Python shell,
+run the following:
+
+    from sqlalchemy import create_engine
+    engine = create_engine('postgresql://postgres@localhost:5432/sqlalchemydb')
+    connection = engine.connect()
+
+That's it; you have a connection to a database. What does this
+connection contain? First of all, information on what kind of a
+database you are connecting, and the capabilities SQLAlchemy offers
+for this database. The URL passed as first positional argument to
+create_engine has to be a database URL conforming to RFC 1738, and
+have the following format::
+
+     dialect+driver://username:password@host:port/database
+
+
+
+The `dialect` section is mapped directly to one of the provided
+dialects in `sqlalchemy.dialects` [?]. A dialect provides a number of
+things: The SQL generation method, extra capabilities of a database,
+and which connection pool is used by default.
+
+Dialect, pool, engine
+
+Let's add a very simple table to our `sqlalchemydb` database. Connect
+to the database with `psql sqlalchemydb`, and run the following SQL
+statement:
 
     CREATE TABLE users (
         id serial PRIMARY KEY,
@@ -10,11 +39,6 @@ with `psql sqlalchemydb`, and run the following SQL statement:
 
 And then connect to the same database with SQLAlchemy, and run a
 query:
-
-    from sqlalchemy import engine
-    engine = create_engine('postgresql://postgres@localhost:5432/sqlalchemydb')
-    conn = engine.connect()
-
 
 Connection pool
 

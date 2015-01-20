@@ -92,4 +92,5 @@ SQAlchemy in, and run the following:
     >>> engine.connect()
 
 If you don't get a error such as `FATAL: database "sqlalchemydb" does
-not exist`, you can carry on.
+not exist`, you can carry on. From here on, any Python code involving
+SQLAlchemy has to be run inside such a virtualenv.
