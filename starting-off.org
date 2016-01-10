@@ -1,5 +1,4 @@
-Starting off with SQLAlchemy
-============================
+* Starting off with SQLAlchemy
 
 In this chapter, we will cover the basics of connecting to a database,
 running statements, and interacting with a session.  Let's start witht
@@ -18,7 +17,6 @@ create_engine has to be a database URL conforming to RFC 1738, and
 have the following format::
 
      dialect+driver://username:password@host:port/database
-
 
 
 The `dialect` section is mapped directly to one of the provided
